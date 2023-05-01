@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/3cc32f4e-35fd-4c62-a3ba-cfae6e23a972/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/Devops-Sadna",
+    "appService.deploySubpath": "."
+}
