@@ -6,7 +6,7 @@ app.get('/',(req,res)=>{
     res.send('Hello')
 })
 app.get('/test',(req,res)=>{
-    res.send('Test Hello from Gad')
+    res.send('Test Hello from Gad Nadjar')
 })
 
 module.exports=app
