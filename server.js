@@ -45,6 +45,10 @@ app.get('/api/students', async (req, res) => {
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
+// Ajouter une promesse pour attendre la fin du démarrage du serveur
+const server = app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
+
+// Exporter le serveur pour une utilisation ultérieure
+module.exports = server;
