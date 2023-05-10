@@ -1,43 +1,64 @@
 function checkInputs() {
   var name = document.getElementById('studentName').value;
-  var grade1 = document.getElementById('grade1').value;
-  var grade2 = document.getElementById('grade2').value;
-  var grade3 = document.getElementById('grade3').value;
+  var exam1 = document.getElementById('exam1').value;
+  var exam2 = document.getElementById('exam2').value;
+  var exam3 = document.getElementById('exam3').value;
 
   var nameValid = /^[a-zA-Z]+$/.test(name);
-  var grade1Valid = /^\d+$/.test(grade1) && grade1 >= 0 && grade1 <= 100;
-  var grade2Valid = /^\d+$/.test(grade2) && grade2 >= 0 && grade2 <= 100;
-  var grade3Valid = /^\d+$/.test(grade3) && grade3 >= 0 && grade3 <= 100;
+  var exam1Valid = /^\d+$/.test(exam1) && exam1 >= 0 && exam1 <= 100;
+  var exam2Valid = /^\d+$/.test(exam2) && exam2 >= 0 && exam2 <= 100;
+  var exam3Valid = /^\d+$/.test(exam3) && exam3 >= 0 && exam3 <= 100;
 
-  var grade1Error = '';
-  var grade2Error = '';
-  var grade3Error = '';
+  var exam1Error = '';
+  var exam2Error = '';
+  var exam3Error = '';
 
-  if (grade1 !== '' && !grade1Valid) {
-    grade1Error = 'Please enter a valid grade between 0 and 100.';
+  if (exam1 !== '' && !exam1Valid) {
+    exam1Error = 'Please enter a valid Exam between 0 and 100.';
   }
 
-  if (grade2 !== '' && !grade2Valid) {
-    grade2Error = 'Please enter a valid grade between 0 and 100.';
+  if (exam2 !== '' && !exam2Valid) {
+    exam2Error = 'Please enter a valid Exam between 0 and 100.';
   }
 
-  if (grade3 !== '' && !grade3Valid) {
-    grade3Error = 'Please enter a valid grade between 0 and 100.';
+  if (exam3 !== '' && !exam3Valid) {
+    exam3Error = 'Please enter a valid Exam between 0 and 100.';
   }
 
   document.getElementById('nameError').textContent = nameValid
     ? ''
     : 'Please enter a valid name (letters only).';
-  document.getElementById('grade1Error').textContent = grade1Valid
-    ? grade1Error
-    : 'Please enter a valid grade between 0 and 100.';
-  document.getElementById('grade2Error').textContent = grade2Valid
-    ? grade2Error
-    : 'Please enter a valid grade between 0 and 100.';
-  document.getElementById('grade3Error').textContent = grade3Valid
-    ? grade3Error
-    : 'Please enter a valid grade between 0 and 100.';
+  document.getElementById('exam1Error').textContent = exam1Valid
+    ? exam1Error
+    : 'Please enter a valid Exam between 0 and 100.';
+  document.getElementById('exam2Error').textContent = exam2Valid
+    ? exam2Error
+    : 'Please enter a valid Exam between 0 and 100.';
+  document.getElementById('exam3Error').textContent = exam3Valid
+    ? exam3Error
+    : 'Please enter a valid Exam between 0 and 100.';
 
-  var isValid = nameValid && grade1Valid && grade2Valid && grade3Valid;
+  var isValid = nameValid && exam1Valid && exam2Valid && exam3Valid;
   document.getElementById('submitBtn').disabled = !isValid;
 }
+
+document.getElementById('studentForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const name = document.getElementById('studentName').value;
+  const exam1 = document.getElementById('exam1').value;
+  const exam2 = document.getElementById('exam2').value;
+  const exam3 = document.getElementById('exam3').value;
+  const response = await fetch('/api/students', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ name, grade1: exam1, grade2: exam2, grade3: exam3 }),
+  });
+  if (response.ok) {
+    document.getElementById('studentForm').reset();
+    alert('Student added successfully');
+  } else {
+    alert('Error adding student');
+  }
+});
