@@ -33,7 +33,7 @@ app.post('/api/students', async (req, res) => {
   }
 });
 
-// Obtenir tous les étudiants
+// Obtenirr tous les étudiants
 app.get('/api/students', async (req, res) => {
   try {
     const students = await Student.find();
