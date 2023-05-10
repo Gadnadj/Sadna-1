@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Grades</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form id="studentForm">
+      <label for="studentName">Student Name:</label><br />
+      <span id="nameError" class="error"></span>
+      <input
+        type="text"
+        id="studentName"
+        name="studentName"
+        pattern="[A-Za-z]+"
+        required
+      /><br />
+
+      <label for="grade1">Grade 1:</label><br />
+      <span id="grade1Error" class="error"></span>
+
+      <input
+        type="number"
+        id="grade1"
+        name="grade1"
+        pattern="[0-9]*"
+        min="0"
+        required
+        max="100"
+        required
+        maxlength="3"
+        required
+      /><br />
+      <label for="grade2">Grade 2:</label><br />
+      <span id="grade2Error" class="error"></span>
+
+      <input
+        type="number"
+        id="grade2"
+        name="grade2"
+        pattern="[0-9]*"
+        min="0"
+        max="100"
+        maxlength="3"
+        required
+      /><br />
+
+      <label for="grade3">Grade 3:</label><br />
+      <span id="grade3Error" class="error"></span>
+
+      <input
+        type="number"
+        id="grade3"
+        name="grade3"
+        pattern="[0-9]*"
+        min="0"
+        max="100"
+        maxlength="3"
+        required
+      /><br />
+
+      <button type="submit" id="submitBtn">Submit</button>
+    </form>
+    <script src="script.js"></script>
+  </body>
+</html>

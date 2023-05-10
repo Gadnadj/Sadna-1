@@ -1,12 +1,17 @@
-const express = require('express')
+const express = require('express');
+const path = require('path');
 
-const app=express()
+const app = express();
 
-app.get('/',(req,res)=>{
-    res.send('Hello')
-})
-app.get('/test',(req,res)=>{
-    res.send('Test Hello from Gad Nadjar')
-})
+// Servez vos API
+app.get('/api', (req, res) => {
+  res.send('Hello from API');
+});
+app.get('/api/test', (req, res) => {
+  res.send('Test Hello from Gad Nadjar');
+});
 
-module.exports=app
+// Servez vos fichiers statiques du front-end
+app.use(express.static(path.join(__dirname, 'public')));
+
+module.exports = app;
