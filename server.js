@@ -13,5 +13,5 @@ app.get('/api/test', (req, res) => {
 
 // Servez vos fichiers statiques du front-end
 app.use(express.static(path.join(__dirname, 'public')));
-
+// with front
 module.exports = app;
