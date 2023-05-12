@@ -7,35 +7,36 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Form to collect student exam information -->
     <form id="studentForm">
+      <!-- Student name input field with validation for alphabetic characters only -->
       <label for="studentName">Student Name:</label><br />
       <span id="nameError" class="error"></span>
       <input
         type="text"
         id="studentName"
         name="studentName"
-        pattern="[A-Za-z]+"
+        pattern="[A-Za-z ]+"
         required
       /><br />
 
+      <!-- Exam score input fields with validation for numeric values between 0 and 100 -->
+      <!-- Exam 1 -->
       <label for="exam1">Exam 1:</label><br />
       <span id="exam1Error" class="error"></span>
-
       <input
         type="number"
         id="exam1"
         name="exam1"
         pattern="[0-9]*"
         min="0"
-        required
         max="100"
         required
-        maxlength="3"
-        required
       /><br />
+
+      <!-- Exam 2 -->
       <label for="exam2">Exam 2:</label><br />
       <span id="exam2Error" class="error"></span>
-
       <input
         type="number"
         id="exam2"
@@ -43,13 +44,12 @@
         pattern="[0-9]*"
         min="0"
         max="100"
-        maxlength="3"
         required
       /><br />
 
+      <!-- Exam 3 -->
       <label for="exam3">Exam 3:</label><br />
       <span id="exam3Error" class="error"></span>
-
       <input
         type="number"
         id="exam3"
@@ -57,12 +57,13 @@
         pattern="[0-9]*"
         min="0"
         max="100"
-        maxlength="3"
         required
       /><br />
 
+      <!-- Submit button, disabled by default until form validation is passed -->
       <button type="submit" id="submitBtn">Submit</button>
     </form>
+    <!-- Link to the JavaScript file for form validation and submission handling -->
     <script src="script.js"></script>
   </body>
 </html>

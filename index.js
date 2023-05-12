@@ -1,19 +1,22 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const { Student } = require('./db');
 
 const app = express();
 
 // Parse incoming request bodies in a middleware before your handlers, available under the req.body property.
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Servez vos fichiers statiques du front-end
+// Serve your static front-end files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Connexion à la base de données
+// Connect to the database
 mongoose
   .connect(
-    'mongodb+srv://gadnadjar:civ7vt39@cluster0.8zbfkva.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+    'mongodb+srv://gadnadjar:jesuisunboss@cluster0.xzwpdy7.mongodb.net/Student?retryWrites=true&w=majority',
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -21,6 +24,20 @@ mongoose
   )
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.log(err));
+
+
+// Register a new student
+app.post('/api/students', async (req, res) => {
+  try {
+    const { name, grade1, grade2, grade3 } = req.body;
+    const student = new Student({ name, grade1, grade2, grade3 });
+    await student.save();
+    res.status(201).json(student);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
 
 const port = process.env.PORT || 3000;
 

@@ -1,78 +1,91 @@
-/* CSS pour le conteneur du formulaire */
+/* CSS for the form container */
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    background-color: #f9f9f9;
-    background-color: rgba(70, 70, 103, 1);
-  }
-  
-  /* CSS pour le formulaire */
-  form {
-    display: flex;
-    flex-direction: column;
-    width: 600px;
-    max-width: 600px;
-    margin: auto;
-    padding: 50px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: white;
-    box-shadow: 10px 10px 200px 40px rgba(255, 255, 255, 0.1); /* Add box-shadow */
-    transition: box-shadow 0.3s ease; /* Add transition */
-  }
-  
-  form:hover {
-    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.3); /* Change box-shadow on hover */
-  }
-  
-  /* CSS pour chaque div contenant un label et un champ de saisie */
-  form div {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-  }
-  
-  /* CSS pour les labels */
-  form label {
-    margin-bottom: 10px;
-    font-weight: bold;
-  }
-  
-  /* CSS pour les champs de saisie */
-  form input {
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1.2em;
-    transition: border-color 0.3s ease; /* Add transition */
-  }
-  
-  form input:focus {
-    border-color: #007bff; /* Change border color on focus */
-  }
-  
-  /* CSS pour les messages d'erreur */
-  form span {
-    margin-top: 5px;
-    color: rgb(255, 0, 0);
-    font-size: large;
-  }
-  
-  /* CSS pour le bouton de soumission */
-  form button {
-    padding: 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.2em;
-    transition: background-color 0.3s ease; /* Add transition */
-  }
-  
-  form button:hover {
-    background-color: #0056b3;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  /* Color of the form container */
+  background-color: #f9f9f9;
+  background-color: rgba(70, 70, 103, 1);
+}
+
+/* CSS for the form */
+form {
+  /* Layout properties for the form */
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  max-width: 600px;
+  margin: auto;
+  padding: 50px;
+  /* Border and background properties of the form */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: white;
+  /* Adding a shadow to the form for a 3D effect */
+  box-shadow: 10px 10px 200px 40px rgba(255, 255, 255, 0.1);
+  /* Smooth transition for the shadow effect */
+  transition: box-shadow 0.3s ease;
+}
+
+/* Change shadow when hovering over the form */
+form:hover {
+  box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.3);
+}
+
+/* CSS for each div containing a label and an input field */
+form div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+/* CSS for the labels */
+form label {
+  margin-bottom: 10px;
+  /* Make the text bold */
+  font-weight: bold;
+}
+
+/* CSS for the input fields */
+form input {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1.2em;
+  /* Smooth transition for the border color */
+  transition: border-color 0.3s ease;
+}
+
+/* Change border color when the input field is in focus */
+form input:focus {
+  border-color: #007bff;
+}
+
+/* CSS for error messages */
+form span {
+  margin-top: 5px;
+  /* Red color for the error messages */
+  color: rgb(255, 0, 0);
+  font-size: large;
+}
+
+/* CSS for the submit button */
+form button {
+  padding: 15px;
+  /* Button color */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2em;
+  /* Smooth transition for the background color */
+  transition: background-color 0.3s ease;
+}
+
+/* Change button color when hovering over it */
+form button:hover {
+  background-color: #0056b3;
+}

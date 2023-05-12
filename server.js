@@ -5,7 +5,7 @@ const { Student } = require('./db');
 
 const app = express();
 
-// Servez vos API
+// Serve your APIs
 app.get('/api', (req, res) => {
   res.send('Hello from API');
 });
@@ -14,14 +14,14 @@ app.get('/api/test', (req, res) => {
   res.send('Test Hello from Gad Nadjar');
 });
 
-// Servez vos fichiers statiques du front-end
+// Serve your static front-end files
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Utilisez le middleware body-parser pour extraire les données de la requête POST
+// Use body-parser middleware to extract POST request data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Enregistrer un nouvel étudiant
+// Register a new student
 app.post('/api/students', async (req, res) => {
   try {
     const { name, grade1, grade2, grade3 } = req.body;
@@ -33,7 +33,7 @@ app.post('/api/students', async (req, res) => {
   }
 });
 
-// Obtenirr tous les étudiants
+// Get all students
 app.get('/api/students', async (req, res) => {
   try {
     const students = await Student.find();
@@ -45,10 +45,10 @@ app.get('/api/students', async (req, res) => {
 
 const port = process.env.PORT || 3000;
 
-// Ajouter une promesse pour attendre la fin du démarrage du serveur
+// Add a promise to wait for the server start up to complete
 const server = app.listen(port, () => {
   console.log(`Server started on port ${port}`);
 });
 
-// Exporter le serveur pour une utilisation ultérieure
+// Export the server for later use
 module.exports = server;
