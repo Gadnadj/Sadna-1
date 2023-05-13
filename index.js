@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -13,10 +14,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Serve your static front-end files
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Set up the database
+const dbUri = process.env.MONGODB_URI;
+
 // Connect to the database
 mongoose
   .connect(
-    'mongodb+srv://gadnadjar:jesuisunboss@cluster0.xzwpdy7.mongodb.net/Student?retryWrites=true&w=majority',
+    dbUri,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -24,7 +28,6 @@ mongoose
   )
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.log(err));
-
 
 // Register a new student
 app.post('/api/students', async (req, res) => {
@@ -37,7 +40,6 @@ app.post('/api/students', async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 });
-
 
 const port = process.env.PORT || 3000;
 
