@@ -45,10 +45,33 @@ describe('POST /api/students', () => {
   // Test that invalid student data is rejected
   it('should reject invalid student data', async () => {
     const res = await request(server).post('/api/students').send({
-      name: 'John',
+      name: 'Gad',
       grade1: -10, // Invalid grade
       grade2: 120, // Invalid grade
       grade3: 'abc', // Invalid grade
+    });
+    expect(res.statusCode).toEqual(400); // Expect a 400 Bad Request status code
+  });
+});
+
+describe('POST /api/students', () => {
+  // Test that invalid student data is rejected
+  it('should reject grades outside of 0-100 range', async () => {
+    const res = await request(server).post('/api/students').send({
+      name: 'Gad',
+      grade1: -10, // Invalid grade
+      grade2: 120, // Invalid grade
+      grade3: 90,
+    });
+    expect(res.statusCode).toEqual(400); // Expect a 400 Bad Request status code
+  });
+
+  it('should reject non-numeric grades', async () => {
+    const res = await request(server).post('/api/students').send({
+      name: 'Adir',
+      grade1: 'abc', // Invalid grade
+      grade2: 'def', // Invalid grade
+      grade3: 'ghi', // Invalid grade
     });
     expect(res.statusCode).toEqual(400); // Expect a 400 Bad Request status code
   });
