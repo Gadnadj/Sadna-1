@@ -19,13 +19,10 @@ const dbUri = process.env.MONGODB_URI;
 
 // Connect to the database
 mongoose
-  .connect(
-    dbUri,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(dbUri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.log(err));
 
